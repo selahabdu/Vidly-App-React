@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import Like from "./common/like";
 
 class Movies extends Component {
   state = {
@@ -13,7 +14,13 @@ class Movies extends Component {
     this.setState({ movies }); // in js if key and value are the same we dont have to write it again as below
     // this.setState((this.state.movies = movies));
   };
-
+  handleLike = (liked) => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(liked);
+    movies[index] = { ...movies[index] };
+    movies[index].isLiked = !movies[index].isLiked;
+    this.setState({ movies });
+  };
   render() {
     if (this.state.movies.length === 0)
       return <h2> there is no data in the database</h2>;
@@ -29,6 +36,7 @@ class Movies extends Component {
               <th>Stock</th>
               <th>Rate</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +46,12 @@ class Movies extends Component {
                 <td>{li.genre.name}</td>
                 <td>{li.numberInStock}</td>
                 <td>{li.dailyRentalRate}</td>
+                <td>
+                  <Like
+                    liked={li.isLiked}
+                    onClick={() => this.handleLike(li)}
+                  />
+                </td>
                 <td>
                   <button
                     onClick={() => this.handleDelete(li._id)}

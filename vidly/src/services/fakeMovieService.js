@@ -7,6 +7,7 @@ const movies = [
     numberInStock: 6,
     dailyRentalRate: 2.5,
     publishDate: "2018-01-03",
+    isLiked: true,
   },
   {
     _id: "12355",
@@ -14,6 +15,7 @@ const movies = [
     genre: { _id: "12", name: "Action" },
     numberInStock: 5,
     dailyRentalRate: 2.5,
+    isLiked: false,
   },
   {
     _id: "12365",
@@ -21,6 +23,7 @@ const movies = [
     genre: { _id: "123", name: "Adventure" },
     numberInStock: 3,
     dailyRentalRate: 3,
+    isLiked: true,
   },
   {
     _id: "12375",
@@ -28,6 +31,7 @@ const movies = [
     genre: { _id: "1234", name: "Adventure" },
     numberInStock: 3,
     dailyRentalRate: 4,
+    isLiked: false,
   },
 ];
 
