@@ -1,24 +1,33 @@
-const Generes = () => {
+import React, { Component } from "react";
+
+const Generes = (props) => {
+  const { items, textProperty, valueProperty, onItemSelect, selectedItem } =
+    props;
+
   return (
-    <table className="table table-bordered ">
-      <thead>
-        <tr>
-          <th>All Generes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Action</td>
-        </tr>
-        <tr>
-          <td>Comedy</td>
-        </tr>
-        <tr>
-          <td>Thriller</td>
-        </tr>
-      </tbody>
-    </table>
+    <ul className="list-group">
+      {items.map((item) => {
+        return (
+          <li
+            onClick={() => onItemSelect(item)}
+            key={item[valueProperty]}
+            className={
+              item === selectedItem
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+          >
+            {item[textProperty]}
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
+//default props
+Generes.defaultProps = {
+  textProperty: "name",
+  valueProperty: "_id",
+};
 export default Generes;
