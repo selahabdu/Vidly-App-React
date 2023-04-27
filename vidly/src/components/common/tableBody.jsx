@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Like from "./like";
 import _ from "lodash"; // to use _.get()
 class TableBody extends Component {
   renderCell = (item, column) => {
